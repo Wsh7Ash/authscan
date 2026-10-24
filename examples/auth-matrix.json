@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {"method": "GET", "path": "/public/health", "role": "anonymous",
+     "expected_status": 200},
+    {"method": "GET", "path": "/api/me", "role": "anonymous",
+     "expected_status": 401},
+    {"method": "GET", "path": "/api/me", "role": "user",
+     "token": "demo-user-token", "expected_status": 200},
+    {"method": "GET", "path": "/api/admin/users", "role": "user",
+     "token": "demo-user-token", "expected_status": 403},
+    {"method": "GET", "path": "/api/admin/users", "role": "admin",
+     "token": "demo-admin-token", "expected_status": 200},
+    {"method": "POST", "path": "/api/orders", "role": "anonymous",
+     "expected_status": 401},
+    {"method": "DELETE", "path": "/api/orders/1", "role": "user",
+     "token": "demo-user-token", "expected_status": 403}
+  ]
+}
